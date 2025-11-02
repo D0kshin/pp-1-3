@@ -7,7 +7,7 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    UserDao userDao = new UserDaoJDBCImpl();
+    private UserDao userDao = new UserDaoJDBCImpl();
 
     public void createUsersTable() {
         userDao.createUsersTable();
@@ -22,11 +22,11 @@ public class UserServiceImpl implements UserService {
     }
 
     public void removeUserById(long id) {
-
+        userDao.removeUserById(id);
     }
 
     public List<User> getAllUsers() {
-        return null;
+        return userDao.getAllUsers();
     }
 
     public void cleanUsersTable() {
