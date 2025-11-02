@@ -3,15 +3,13 @@ package jm.task.core.jdbc.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public final class Util {
-    // реализуйте настройку соеденения с БД
-
+public final class ConnectionManager {
     private static String URL_KEY = "db.url";
     private static String USERNAME_KEY = "db.username";
     private static String PASSWORD_KEY = "db.password";
-    private Util() {}
+    private ConnectionManager() {}
 
-    public static Connection openConnection() {
+    public static Connection open() {
         try {
             return DriverManager.getConnection(
 //                    "jdbc:mysql://localhost:3306/",
