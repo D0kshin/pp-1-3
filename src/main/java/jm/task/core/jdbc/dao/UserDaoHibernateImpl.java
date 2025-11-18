@@ -53,7 +53,9 @@ public class UserDaoHibernateImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
         try(SessionFactory sessionFactory = getSessionFactory()) {
             Session session = sessionFactory.openSession();
+            session.beginTransaction();
             session.save(new User(name, lastName, age));
+            session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
         }
@@ -63,8 +65,10 @@ public class UserDaoHibernateImpl implements UserDao {
     public void removeUserById(long id) {
         try(SessionFactory sessionFactory = getSessionFactory()) {
             Session session = sessionFactory.openSession();
+            session.beginTransaction();
             User user = session.get(User.class, id);
             session.delete(user);
+            session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
         }
@@ -74,7 +78,9 @@ public class UserDaoHibernateImpl implements UserDao {
     public List<User> getAllUsers() {
         try (SessionFactory sessionFactory = getSessionFactory()) {
             Session session = sessionFactory.openSession();
+            session.beginTransaction();
             List<User> users = session.createQuery("FROM " + User.class.getSimpleName()).list();
+            session.getTransaction().commit();
             return users;
         }
     }

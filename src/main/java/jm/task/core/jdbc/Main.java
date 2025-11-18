@@ -7,6 +7,8 @@ public class Main {
     public static void main(String[] args) {
         // реализуйте алгоритм здесь
         UserServiceImpl userService = new UserServiceImpl();
+        userService.createUsersTable();
+
         userService.saveUser("Ilya", "Abraamov", (byte) 12);
         userService.saveUser("Adolf", "Abraamov", (byte) 16);
         userService.saveUser("Vasya", "Abraamov", (byte) 20);
@@ -16,6 +18,9 @@ public class Main {
         for(User user : userService.getAllUsers()){
             System.out.println(user);
         }
+
+        userService.cleanUsersTable();
+        userService.dropUsersTable();
 
     }
 }
