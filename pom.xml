@@ -8,6 +8,7 @@
     <artifactId>TaskJDBC</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
+        <finalName>final</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
